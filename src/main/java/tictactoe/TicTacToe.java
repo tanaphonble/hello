@@ -1,3 +1,5 @@
+package tictactoe;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,7 +41,6 @@ public class TicTacToe {
             final String plotX3 = board.get(3 + "" + plotY);
             if (("X".equals(plotX1) && "X".equals(plotX2) && "X".equals(plotX3)) ||
                     "O".equals(plotX1) && "O".equals(plotX2) && "O".equals(plotX3)) {
-                System.out.println("horizontal win");
                 return true;
             }
         }
@@ -53,7 +54,6 @@ public class TicTacToe {
             final String plotY3 = board.get(plotX + "" + 3);
             if (("X".equals(ployY1) && "X".equals(plotY2) && "X".equals(plotY3)) ||
                     "O".equals(ployY1) && "O".equals(plotY2) && "O".equals(plotY3)) {
-                System.out.println("vertical win");
                 return true;
             }
         }
