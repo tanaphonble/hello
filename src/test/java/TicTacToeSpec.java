@@ -1,41 +1,38 @@
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TicTacToeSpec {
 
-    @Rule
-    public ExpectedException exception = ExpectedException.none();
     private TicTacToe ticTacToe;
 
-    @Before
+    @BeforeEach
     public final void before() {
         ticTacToe = new TicTacToe();
     }
 
     @Test
     public void whenXOutsideBoardThenRuntimeException() {
-        exception.expect(RuntimeException.class);
-        exception.expectMessage("X is outside board");
-        ticTacToe.play(5, 2);
+        assertThrows(RuntimeException.class, () -> {
+            ticTacToe.play(5, 2);
+        }, "X is outside board");
     }
 
     @Test
     public void whenYOutsideBoardThenRuntimeException() {
-        exception.expect(RuntimeException.class);
-        exception.expectMessage("Y is outside board");
-        ticTacToe.play(2, 5);
+        assertThrows(RuntimeException.class, () -> {
+            ticTacToe.play(2, 5);
+        }, "Y is outside board");
     }
 
     @Test
     public void whenOccupiedThenRuntimeException() {
         ticTacToe.play(2, 1);
-        exception.expect(RuntimeException.class);
-        exception.expectMessage("Box is occupied");
-        ticTacToe.play(2, 1);
+        assertThrows(RuntimeException.class, () -> {
+            ticTacToe.play(2, 1);
+        }, "Box is occupied");
     }
 
     @Test
